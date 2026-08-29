@@ -23,13 +23,13 @@ import {
 } from "@/components/ui/accordion";
 
 const ASSETS = {
-  hero: "/manus-storage/hero-mascot-reference_76ec7307.png",
-  overview: "/manus-storage/app-overview_c37036f4.png",
-  inventory: "/manus-storage/app-inventory_a793ba3a.png",
-  trends: "/manus-storage/app-trends_b90ef1b4.png",
-  multistore: "/manus-storage/app-multistore_dbd0e1f7.png",
-  reminders: "/manus-storage/app-reminders_9241b6ed.png",
-  brandBoard: "/manus-storage/brand-board_0a03c37a.png",
+  hero: "/assets/brand/hero-mascot.webp",
+  overview: "/assets/product/app-overview.webp",
+  inventory: "/assets/product/app-inventory.webp",
+  trends: "/assets/product/app-trends.webp",
+  multistore: "/assets/product/app-multistore.webp",
+  reminders: "/assets/product/app-reminders.webp",
+  brandBoard: "/assets/brand/brand-board.webp",
 };
 
 function BrandIcon({ className = "" }: { className?: string }) {

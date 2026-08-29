@@ -24,4 +24,4 @@ pnpm check
 pnpm build
 ```
 
-> 线上页面使用平台托管的 `/manus-storage/...` 静态地址。`assets/` 文件夹用于源文件备份和迁移，不参与当前项目生产构建。请在替换二维码或人物素材前阅读[项目运维手册](docs/项目运维手册.md)。
+> 自托管部署（`self-hosted-deploy` 分支）已将图片本地化：页面引用 `client/public/assets/` 下的 WebP 优化版，`assets/` 目录仍作为源文件备份与迁移底稿，不参与生产构建。部署方式见 [deploy/README.md](deploy/README.md)。

@@ -1,0 +1,18 @@
+services:
+  site:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    expose: ["3000"]
+    networks: [promo]
+
+networks:
+  promo:
+    # 改成 costbook 现有 compose 网络名（docker network ls | grep costbook），
+    # 让已有 Caddy 容器能通过服务名 site:3000 反代到本站点。
+    name: ${SITE_NETWORK:-costbook}
+    external: true

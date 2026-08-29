@@ -18,10 +18,10 @@ import {
 } from "lucide-react";
 
 const SCENE_PHOTOS = {
-  retail: "/manus-storage/retail-checkout_fa34b997.jpg",
-  restaurant: "/manus-storage/restaurant-owner_58105868.jpg",
-  service: "/manus-storage/shop-owner_239faf30.jpg",
-  hero: "/manus-storage/service-owner-tablet_e24b24c3.jpg",
+  retail: "/assets/scenes/retail-checkout.webp",
+  restaurant: "/assets/scenes/restaurant-owner.webp",
+  service: "/assets/scenes/shop-owner.webp",
+  hero: "/assets/scenes/service-owner-tablet.webp",
 };
 
 function BrandIcon({ className = "" }: { className?: string }) {

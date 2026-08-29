@@ -203,10 +203,16 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [react(), tailwindcss()];
 
-export default defineConfig({
-  plugins,
+// Manus 平台专用插件（运行时注入 / JSX 源码定位 / 调试日志收集 / 存储代理）
+// 仅在本地开发服务器启用；自托管生产构建不依赖 Manus 平台。
+if (process.env.NODE_ENV !== "production") {
+  plugins.push(jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy());
+}
+
+export default defineConfig(({ command }) => ({
+  plugins: command === "serve" ? plugins : [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -238,4 +244,4 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-});
+}));
