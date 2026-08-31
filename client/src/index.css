@@ -2,7 +2,7 @@
  * 设计提示｜清蓝经营画报：官网沿用“清蓝经营皮肤”；品牌蓝表达可信赖的主操作，
  * 浅蓝与白色提供留白，活力橙仅强调关注与行动。页面避免无意义的深色霓虹与通用紫渐变。
  */
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap");
+/* 说明：不再引入 Google Fonts（大陆访问不稳定）；中文显示字体使用系统宋体栈，正文使用系统黑体栈。 */
 @import "tailwindcss";
 @import "tw-animate-css";
 
