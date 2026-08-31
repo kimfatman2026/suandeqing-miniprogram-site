@@ -302,6 +302,7 @@ export default function Home() {
       <main id="top">
         {/* 封面 */}
         <section className="mn-cover" aria-labelledby="hero-title">
+          <img className="mn-ambient mn-ambient-cover" src={ASSETS.hero} alt="" aria-hidden="true" />
           <div className="mn-coverframe">
             <div className="mn-coverhead">
               <span className="t">清蓝经营画报</span>
@@ -398,6 +399,13 @@ export default function Home() {
           <div className="mn-rule" aria-hidden="true" />
           {featureRows.map((feature) => (
             <article className={`mn-spread ${feature.tone}`} id={feature.id} key={feature.id}>
+              <img
+                className={`mn-ambient mn-ambient-spread`}
+                src={feature.asset}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
               <div className="mn-spread-copy" data-reveal>
                 <div className="mn-chapnum">
                   <span className="latin">{feature.latin}</span>
@@ -525,6 +533,7 @@ export default function Home() {
 
         {/* 封底 */}
         <section className="mn-backcover" aria-labelledby="cta-heading">
+          <img className="mn-ambient mn-ambient-backcover" src={ASSETS.overview} alt="" aria-hidden="true" loading="lazy" />
           <BrandIcon className="icon" />
           <p className="k">算得清 · 小微商家经营管理</p>
           <h2 id="cta-heading">

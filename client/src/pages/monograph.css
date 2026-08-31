@@ -294,9 +294,11 @@
   padding: clamp(36px, 5vw, 72px) 0;
   border-top: 1px solid var(--line-strong);
   position: relative;
+  overflow: hidden;
 }
-.mn-spread:nth-child(even) .mn-spread-copy { order: 2; }
-.mn-spread:nth-child(even) .mn-spread-plate { order: 1; }
+.mn-spread-copy, .mn-spread-plate { position: relative; z-index: 1; }
+.mn-spread:nth-of-type(even) .mn-spread-copy { order: 2; }
+.mn-spread:nth-of-type(even) .mn-spread-plate { order: 1; }
 .mn-chapnum { display: flex; align-items: baseline; gap: 18px; margin-bottom: 6px; }
 .mn-chapnum .latin { font-family: var(--serif-latin); font-style: italic; font-size: clamp(64px, 7vw, 110px); line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--tone, var(--brand)); }
 .mn-chapnum .cn { font-family: var(--sans-cn); font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); color: var(--ink); letter-spacing: 0.14em; }
@@ -328,10 +330,43 @@
 
 @media (max-width: 920px) {
   .mn-spread { grid-template-columns: 1fr; }
-  .mn-spread:nth-child(even) .mn-spread-copy { order: 1; }
-  .mn-spread:nth-child(even) .mn-spread-plate { order: 2; }
+  .mn-spread:nth-of-type(even) .mn-spread-copy { order: 1; }
+  .mn-spread:nth-of-type(even) .mn-spread-plate { order: 2; }
   .mn-spread-copy .desc::first-letter { font-size: 44px; }
+  .mn-ambient-spread { opacity: 0.1; width: 90%; }
 }
+
+/* ---------------- 氛围底图（原图放大 + 边缘羽化 + 模糊） ---------------- */
+.mn-ambient {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(30px) saturate(1.08);
+  opacity: 0.2;
+  -webkit-mask-image: radial-gradient(closest-side, #000 42%, transparent 97%);
+  mask-image: radial-gradient(closest-side, #000 42%, transparent 97%);
+}
+.mn-ambient-cover {
+  top: -6%; right: -10%;
+  width: min(58vw, 860px); height: 88%;
+}
+.mn-ambient-spread {
+  top: 50%; transform: translateY(-50%);
+  width: 46%; height: 86%;
+  opacity: 0.15;
+}
+.mn-spread:nth-of-type(odd) .mn-ambient-spread { right: -9%; }
+.mn-spread:nth-of-type(even) .mn-ambient-spread { left: -9%; }
+.mn-ambient-backcover {
+  top: -12%; right: -8%;
+  width: 62%; height: 124%;
+  opacity: 0.16;
+  filter: blur(36px) saturate(1.1);
+}
+.mn-backcover > *:not(.mn-ambient) { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .mn-ambient { display: none; } }
 
 /* ---------------- 特辑（使用场景） ---------------- */
 .mn-special { background: linear-gradient(138deg, #f2f8ff, #e0f1ff); border-top: 1px solid rgba(213, 232, 255, 0.9); border-bottom: 1px solid rgba(213, 232, 255, 0.9); margin-top: clamp(48px, 7vw, 96px); padding: clamp(44px, 6vw, 88px) 20px; }
